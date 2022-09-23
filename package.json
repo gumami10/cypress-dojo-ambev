@@ -1,0 +1,25 @@
+{
+  "name": "cypress-dojo-ambev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gumami10/cypress-dojo-ambev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gumami10/cypress-dojo-ambev/issues"
+  },
+  "homepage": "https://github.com/gumami10/cypress-dojo-ambev#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "cypress": "^10.8.0",
+    "faker-br": "^0.4.1"
+  }
+}
