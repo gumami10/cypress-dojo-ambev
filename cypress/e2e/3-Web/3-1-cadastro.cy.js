@@ -4,16 +4,13 @@ const faker = require('faker-br')
 
 describe('Funcionalidade: Cadastro', () => {
 
-    before(() => {
-        cy.generateFixture()
-    })
-
     beforeEach(() => {
+        cy.generateFixture()
         cy.visit('/cadastrar')
     })
 
     it("Deve poder cadastrar um usuário com sucesso", () => {
-        cy.fixture("newuser").then((usuario) => {
+        cy.readFile("cypress/fixtures/newuser.json").then(usuario => {
             cy.cadastro(usuario.nome, usuario.email, usuario.senha)
             cy.get('[data-test="dashboard-welcome"]').should('contain', `Bem-vindo ${usuario.nome}`)
         })

@@ -3,12 +3,12 @@
 describe('Funcionalidade: Criar perfil', () => {
 
     beforeEach(() => {
-        cy.visit('/login')
-        cy.fixture("newuser").then((usuario) => {
-            cy.login(usuario.email, usuario.senha)    
-            cy.get('[data-test="dashboard-welcome"]').should('contain', `Bem-vindo ${usuario.nome}`)
-            cy.get('.large').should('contain', 'Dashboard')
+        cy.generateFixture()
+        cy.visit('/cadastrar')
+        cy.readFile("cypress/fixtures/newuser.json").then(usuario => {
+            cy.cadastro(usuario.nome, usuario.email, usuario.senha)
         })
+
     })
     
     it('Deve criar perfil com sucesso', () => {
@@ -19,6 +19,7 @@ describe('Funcionalidade: Criar perfil', () => {
     });
 
     it('Deve validar mensagem de URL errada', () => {
+        cy.get('[data-test="dashboard-createProfile"]').click()
 
         cy.preencher_perfil('QAE Pleno', 'Ambev', 'ericlândia', 'São Paulo', 'JavaScript, NodeJS, Python, Java', 'gumami10', 'Eae')
 

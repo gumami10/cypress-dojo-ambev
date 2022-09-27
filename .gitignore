@@ -1,3 +1,9 @@
+# Dynamic fixture
+cypress/fixtures/newuser.json
+
+# Cypress video report
+**/videos
+
 # Logs
 logs
 *.log
