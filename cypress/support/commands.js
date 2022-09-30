@@ -60,3 +60,10 @@ Cypress.Commands.add('cadastro', (nome, email, senha) => {
     cy.get('[data-test="register-password2"] > .MuiInputBase-root > .MuiInputBase-input').type(senha)
     cy.get('[data-test="register-submit"]').click()
 })
+
+Cypress.Commands.add('gerarToken', (email, senha) => {
+    cy.request('POST', 'api/auth', {email, password:senha})
+    .then((response) => {
+        return response.body.jwt
+    })
+})

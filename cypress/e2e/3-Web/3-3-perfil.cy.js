@@ -10,6 +10,11 @@ describe('Funcionalidade: Criar perfil', () => {
         })
 
     })
+
+    afterEach(() => {
+        cy.screenshot()
+        cy.log('tirou screenshot')
+    })
     
     it('Deve criar perfil com sucesso', () => {
         cy.get('[data-test="dashboard-createProfile"]').click()
