@@ -21,7 +21,7 @@
   "homepage": "https://github.com/gumami10/cypress-dojo-ambev#readme",
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
-    "cypress": "^10.8.0",
+    "cypress": "^10.10.0",
     "faker-br": "^0.4.1"
   }
 }

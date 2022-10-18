@@ -41,7 +41,7 @@ describe('Funcionalidade da API: User', () => {
         })
     })
 
-    it.only("Adicionar experiencia", () => {
+    it("Adicionar experiencia", () => {
         const body = {
             title: 'Especialista em QA',
             company: 'Ambev',
@@ -57,5 +57,74 @@ describe('Funcionalidade da API: User', () => {
             expect(res.body.experience).length.to.be.greaterThan(0)
         })
     })
+
+    it("pegar usuario logado", () => {
+        
+        const options = {method: 'GET', url:  '/api/auth',
+            headers: { cookie: token}
+        }
+        cy.request(options).then(res => {
+            expect(res.status).to.be.eq(200)
+            expect(res.body._id).length.to.be.greaterThan(0)
+            expect(res.body.email).to.be.eq("eric.lepore@ambevtech.com.br")
+        })
+    })
+
+    it("deleta experiencia", () => {
+        let len;
+        const optionsGet = {method: 'GET', url:  '/api/profile/me',
+            headers: { cookie: token}
+        }
+        cy.request(optionsGet).then(res => {
+            len = res.body.experience.length
+            const optionsDelete = {method: 'DELETE', url:  `/api/profile/experience/${res.body.experience[0]._id}`,
+                headers: { cookie: token}
+            }
+            return cy.request(optionsDelete)
+        }).then(res => {
+            expect(res.body.experience.length).to.be.eq(len - 1)
+            expect(res.status).to.be.eq(200)
+        })
+    })
+
+    it("adicionar educação", () => {
+        const body = {
+            "school": "FATEC",
+            "degree": "Associate",
+            "fieldofstudy": "ADS",
+            "from": "2018-01-01",
+            "to": "2021-01-07",
+            "current": false,
+            "description": "ADS"
+        }
+
+        const options = {method: 'PUT', url:  '/api/profile/education',
+            headers: { cookie: token},
+            body
+        }
+        cy.request(options).then(res => {
+            expect(res.status).to.be.eq(200)
+            expect(res.body._id).length.to.be.greaterThan(0)
+            expect(res.body.education.length).to.be.greaterThan(0)
+        })
+    })
+    it.only("deletar educação", () => {
+        let len;
+        const optionsGet = {method: 'GET', url:  '/api/profile/me',
+            headers: { cookie: token}
+        }
+        cy.request(optionsGet).then(res => {
+            len = res.body.education.length
+            const optionsDelete = {method: 'DELETE', url:  `/api/profile/education/${res.body.education[0]._id}`,
+                headers: { cookie: token}
+            }
+            return cy.request(optionsDelete)
+        }).then(res => {
+            expect(res.body.education.length).to.be.eq(len - 1)
+            expect(res.status).to.be.eq(200)
+        })
+        
+    })
+
 
 })
