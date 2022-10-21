@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.19.0-chrome100-ff99-edge
     strategy:
-      fail_fast: false
+      fail-fast: false
       matrix:
         containers: [1, 2, 3, 4]
     steps:
