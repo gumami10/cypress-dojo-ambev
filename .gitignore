@@ -7,6 +7,7 @@ cypress/fixtures/newuser.json
 # Logs
 logs
 *.log
+*.png
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
