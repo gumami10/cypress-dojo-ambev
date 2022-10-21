@@ -1,0 +1,24 @@
+name: Cypress tests dashboard
+on: [push]
+jobs:
+  cypress-run:
+    name: Cypress run
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node14.19.0-chrome100-ff99-edge
+    strategy:
+      fail_fast: false
+      matrix:
+        containers: [1, 2, 3, 4]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v4.x.x # use the explicit version number
+        with:
+          record: true
+          parallel: true
+          group: 'Linux/Electron'
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
