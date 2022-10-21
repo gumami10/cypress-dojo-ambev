@@ -3,6 +3,10 @@ cypress/fixtures/newuser.json
 
 # Cypress video report
 **/videos
+cypress/results/*
+cypress/reports/*
+cypress/screenshots/*
+cypress/videos/*
 
 # Logs
 logs
