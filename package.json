@@ -8,7 +8,7 @@
     "cy:run": "cypress run --config video=false",
     "cy:headless": "cypress run --config video=false",
     "cy:open": "cypress open",
-    "cy:dash": "cypress run --record --key af625242-9370-4d3b-99f2-1018c78ed5e9"
+    "cy:dash": "cypress run --record --key <key-dashboard>"
   },
   "repository": {
     "type": "git",
